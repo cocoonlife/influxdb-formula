@@ -26,7 +26,7 @@ latest release off that branch.
 
 {% if not salt['pillar.get']('influxdb:no_conf_defaults', False) %}
 {% set influxdb_version = salt['pillar.get']('influxdb:version') %}
-{% set major, minor = influxdb_version.split('.')[:2] %}
+{% set major, minor = influxdb_version.split('.',1)[:2] %}
 {% do defaults.influxdb.conf.update(config_defaults.get(major).get(minor)) %}
 {% endif %}
 

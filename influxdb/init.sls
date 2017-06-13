@@ -2,7 +2,7 @@
 
 {% if influxdb_settings['version'] is defined %}
   {% set influxdb_version = salt['pillar.get']('influxdb:version') %}
-  {% set major, minor = influxdb_version.split('.')[:2] %}
+  {% set major, minor = influxdb_version.split('.',1)[:2] %}
 
   {% if major == '0' and minor|int < 10 %}
     {% set base_url = 'http://s3.amazonaws.com/influxdb' %}
